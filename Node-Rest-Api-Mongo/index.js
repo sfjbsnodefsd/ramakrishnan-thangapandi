@@ -1,23 +1,18 @@
-//console.log("This is our starting point");
-const express = require("express");
-const coursesRouter = require("./routes/courses");
+
+const express = require("express")
+const coursesRouter = require("./routes/courses")
+require("dotenv").config();
+const mongoose = require('mongoose')
+const bodyParser = require("body-parser")
 
 const app = express();
-//app.get("/courses",coursesRouter);
-
-require("dotenv").config();
-const mongoose = require("mongoose");
-
+app.use(bodyParser.json());
 app.use(coursesRouter);
 
-mongoose.connect(process.env.DB_CONNECTION_URL,()=>{
-    console.log("DB connection is successful");
-}
-)
 
-app.get("/",(req,res)=>{
-    res.send("API is working fine");
+mongoose.connect(process.env.DB_CONNECTION_URL,() =>{
+    console.log("connected to db sucessfully");
 })
-app.listen(process.env.PORT, () => {
-    console.log("This is our starting point");
+app.listen(process.env.PORT,() => {
+    console.log("server is starting ");
 })
