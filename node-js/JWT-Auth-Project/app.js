@@ -6,6 +6,8 @@ const app = express();
 const userRouter = require("./api/users/user.router");
 app.use(express.json())
 app.use("/api/users",userRouter);
+//app.use("/",userRouter);
+//app.use("/api/getUsersByID",userRouter);
 
 // app.get("/api", (req, res) => {
 // res.json({
