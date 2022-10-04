@@ -7,7 +7,7 @@ export async function isAuthenticated(req, res, next) {
   jwt.verify(token, "secret", (err, user) => {
     if (err) {
       return res.json({
-        sucess: 0,
+        success: 0,
         message: "Unauthoroized",
       });
     } else {
