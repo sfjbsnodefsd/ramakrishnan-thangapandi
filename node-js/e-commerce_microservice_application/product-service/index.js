@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const PORT = process.env.PORT || 5001;
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
