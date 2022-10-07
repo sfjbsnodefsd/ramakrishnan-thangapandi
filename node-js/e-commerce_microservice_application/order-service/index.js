@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const amqp = require("amqplib");
+const Order = require("./Order");
 
 
 app.use(express.json());
@@ -14,7 +15,7 @@ mongoose.connect(
   },
   () => {
     console.log(`order service DB  Connected`);
-    // console.log(pro);
+
   }
 );
 async function connect() {
@@ -24,12 +25,28 @@ async function connect() {
   await channel.assertQueue("ORDER");
 }
 
+function createOrder(products, userEmail) {
+  let total = 0;
+  for (t = 0; t < products.length; t++) {
+    total += products[t].price;
+  }
+  const newOrder = new Order({
+    products: products,
+    user: userEmail,
+    total_price: total
+  });
+  newOrder.save();
+  return newOrder;
+}
 connect().then(() => {
-    channel.consume("ORDER", data => {
-        const {products , userEmail} = JSON.parse(data.content);
-        console.log("consuming order queue")
-        console.log(products);;
-    })
+  channel.consume("ORDER", data => {
+    const { products, userEmail } = JSON.parse(data.content);
+    const newOrder = createOrder(products, userEmail);
+    console.log("consuming order queue");
+    console.log(products);
+    channel.ack(data);
+    channel.sendToQueue("PRODUCT",Buffer.from(JSON.stringify({newOrder})));
+  })
 });
 
 app.listen(5002, () => {
