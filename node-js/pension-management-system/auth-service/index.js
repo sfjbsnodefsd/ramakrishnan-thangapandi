@@ -14,8 +14,8 @@ mongoose.connect("mongodb://localhost:27017/pension-auth-service",{
     console.log("Pension Auth service db connected");
 });
 app.post("/auth/reg", async (req, res) => {
-    const { email, password, name } = req.body;
-    const userExists = await User.findOne({ email });
+    const { name, email, password, aadhar } = req.body;
+    const userExists = await user.findOne({ email });
     if (userExists) {
         return res.json({
             success: 0,
@@ -23,8 +23,8 @@ app.post("/auth/reg", async (req, res) => {
         });
     }
     else {
-        const newUser = new User({
-            name, email, password
+        const newUser = new user({
+            name, email, password,aadhar
         });
         newUser.save();
         return res.json(newUser);
@@ -33,7 +33,7 @@ app.post("/auth/reg", async (req, res) => {
 
 app.post("/auth/login", async (req, res) => {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await user.findOne({ email });
     if (!user) {
         res.json({
             success: 0,
