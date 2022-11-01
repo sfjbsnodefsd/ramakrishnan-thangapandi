@@ -1,9 +1,28 @@
 <h2>{{title}}</h2>
-<input type="text" id="txtName" [(ngModel)]="name" placeholder="Enter your name"/>Name <br />
-<input type="text" id="txtAge"  [(ngModel)]="age" placeholder="Enter your age"/>Age <br />
-gender
-<div>
-<input type="radio"  [(ngModel)]="gender" id="gender" for="gender" value="male"/>Male
-<input type="radio"   [(ngModel)]="gender" id="gender" for="gender" value="female"/>Female
+<div style="margin: 15px;" class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+    <input type="text" [(ngModel)]="name" class="form-control" aria-label="name"
+        aria-describedby="inputGroup-sizing-default">
 </div>
-<button (click)="save()">Submit</button>
+<div style="margin: 15px;" class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+    <input type="text" [(ngModel)]="age" class="form-control" aria-label="age"
+        aria-describedby="inputGroup-sizing-default">
+</div>
+
+<h5>Gender</h5>
+
+<div style="margin: 15px;" class="form-check">
+    <input class="form-check-input" [(ngModel)]="gender" type="radio" value="Male" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+        Male
+    </label>
+</div>
+<div style="margin: 15px;" class="form-check">
+    <input class="form-check-input" [(ngModel)]="gender" type="radio" value="Female" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+        Female
+    </label>
+</div>
+<button type="button" style="margin-left: 800px;position: relative; align-items:center;" (click)="save()"
+    class="btn btn-primary">Submit</button>
