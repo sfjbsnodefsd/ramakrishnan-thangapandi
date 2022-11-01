@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import User from 'src/app/Entity/User';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -7,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
   title = "Fill out the form below";
-  name="";
-  age=0;
-  gender="male";
-  constructor() { }
-  save(){
-    console.log(this.name + " "+ this.age + " "+ this.gender);
+  user: User = new User();
+  constructor(private userService: UserService) { }
+  save() {
+    const observables = this.userService.saveUser(this.user);
+    observables.subscribe(
+      (response: any) => {
+        console.log(response);
+      }, function (error) {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {
