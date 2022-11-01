@@ -5,18 +5,6 @@
       "age": 25,
       "gender": "Male",
       "id": 1
-    },
-    {
-      "name": "sumathi",
-      "age": "25",
-      "gender": "Female",
-      "id": 2
-    },
-    {
-      "name": "Arul",
-      "age": "5",
-      "gender": "Male",
-      "id": 3
     }
   ]
 }
