@@ -9,6 +9,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisteredUsersComponent } from './registered-users/registered-users.component';
+import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegisteredUsersComponent } from './registered-users/registered-users.co
     UserFormComponent,
     NavbarComponent,
     HomeComponent,
-    RegisteredUsersComponent
+    RegisteredUsersComponent,
+    PipeDemoComponent
   ],
   imports: [
     BrowserModule,
