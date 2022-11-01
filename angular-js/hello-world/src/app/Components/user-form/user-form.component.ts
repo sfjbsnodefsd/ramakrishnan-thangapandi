@@ -9,15 +9,19 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class UserFormComponent implements OnInit {
   title = "Fill out the form below";
+  result="";
   user: User = new User();
   constructor(private userService: UserService) { }
   save() {
     const observables = this.userService.saveUser(this.user);
+    this.result="User has been added successfully";
+    this.user=new User();
     observables.subscribe(
       (response: any) => {
-        console.log(response);
+        console.log(response);        
       }, function (error) {
         console.log(error);
+        this.result=error;
       }
     );
   }
