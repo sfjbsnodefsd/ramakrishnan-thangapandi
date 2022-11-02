@@ -9,10 +9,12 @@ import { Todo } from 'src/app/Entity/Todo';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
+  //todoValue:string="";
   AddTodo(todo: string) {
     const newTodo = new Todo();
     newTodo.title = todo;
     this.store.dispatch(new TodoAdd(newTodo));
+    //this.todoValue="";
   }
   constructor(private store: Store<{ todos: Todo[] }>) { }
 
