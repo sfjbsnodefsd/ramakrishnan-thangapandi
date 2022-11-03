@@ -3,8 +3,8 @@
     width:15em;
 }
 .todos li{
-    background-color: #EE45F3;
-    color:white;
+    background-color: #39FF14;
+    color:black;
     padding:4px;
     margin: 5px 20px;
     border-radius: 4%;
@@ -15,4 +15,5 @@
     padding: 0 px 5px 0px 5px;
     cursor: pointer;
     color:wheat;
+    border-radius: 5%;
 }

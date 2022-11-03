@@ -1,11 +1,12 @@
-.addtodo{
-   background-color: #39FF14;
-   color: black;
-   text-align: center;
-   position: center;
-   margin-left:650px; 
+.addtodo {
+    background-color: #39FF14;
+    color: black;
+    text-align: center;
+    position: center;
+    margin-left: 650px;
 }
-.btn{
+
+.btn {
     background-color: #39FF14;
     color: black;
     margin-left: 700px;
