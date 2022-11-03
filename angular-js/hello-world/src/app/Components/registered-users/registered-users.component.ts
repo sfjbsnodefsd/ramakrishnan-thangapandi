@@ -13,7 +13,7 @@ export class RegisteredUsersComponent implements OnInit {
     const observables = this.userService.deleteUser(user);
     observables.subscribe((response: any) => {
       console.log(response);
-      this.users.slice(index, 1);
+      this.users.splice(index, 1);
       this.getUserDetails();
     })
   }
