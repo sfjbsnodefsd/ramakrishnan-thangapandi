@@ -1,8 +1,8 @@
 <body>
-<ul class="todos" *ngFor="let todo of todos;">
-    <li>
-        {{todo.title}}
-        <span class="cross">X</span>
-    </li>
-</ul>
+    <ul class="todos" *ngFor="let todo of todos; let i=index">
+        <li>
+            {{todo.title}}
+            <span class="cross" (click)="removeTodo(i)">X</span>
+        </li>
+    </ul>
 </body>
