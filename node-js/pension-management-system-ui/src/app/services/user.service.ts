@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import User from '../entity/User';
 import { HttpClient } from '@angular/common/http';
 
-const BASE_URL = "http://localhost:5000/users";
+const BASE_URL = "http://localhost:6000/auth-service/users/login";
 const LOGOUT_URL = "http://localhost:4200/login?signout=true";
 @Injectable({
   providedIn: 'root'

@@ -22,6 +22,7 @@ module.exports = {
         })
     },
     login: (req, res) => {
+        console.log("i am here")
         const body = req.body;
         service.getUserByUserEmail(body, (err, results) => {
             if (err) {
@@ -39,6 +40,7 @@ module.exports = {
                 const jsontoken = sign({ result: results }, process.env.KEY, {
                     expiresIn: "1h"
                 });
+                console.log("login is successful")
                 return res.status(200).json({ success: 1, message: "Login successful", token: jsontoken })
             }
             else
