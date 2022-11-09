@@ -4,7 +4,8 @@ import { EmailActionType } from "../shared/enum/email-action-types-enum";
 
 const initialState: Todo[] = [
     {
-        email: ""
+        email: "",
+        token: ""
     }
 ]
 

@@ -1,3 +1,4 @@
 export class Todo {
-    email: String = "";
+    email: string = "";
+    token: string="";
 }

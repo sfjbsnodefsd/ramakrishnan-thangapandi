@@ -14,7 +14,7 @@ import { EmailAdd } from 'src/app/session/email.actions';
 export class LoginComponent implements OnInit {
   user: User = new User();
   //result="";
-  AddEmail(emailAddress: String) {
+  AddEmail(emailAddress: string) {
     const newEmail = new Todo();
     newEmail.email = emailAddress;
     this.store.dispatch(new EmailAdd(newEmail));
@@ -24,9 +24,11 @@ export class LoginComponent implements OnInit {
     //this.router.navigateByUrl('pension-detail');
     const observables = this.userService.loginUser(this.user);
     //this.result="User has been added successfully";
+
+    
     observables.subscribe(
       (response: any) => {
-        this.AddEmail(this.user.email);
+        this.AddEmail(this.user.email.toString());
         this.router.navigateByUrl('pension-detail');
         //console.log(response);        
       }, function (error) {
