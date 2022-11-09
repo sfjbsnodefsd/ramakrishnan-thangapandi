@@ -37,10 +37,10 @@ app.get("/pensioner/getall", isAuthenticated, async (req, res) => {
             return res.json(results);
         });
 });
-app.get("/pensioner/getby/:aadhar", isAuthenticated, async (req, res) => {
-    pool.query(`select * from pensioners where aadhar=?`,
+app.get("/pensioner/getByAadhar/:aadhar", isAuthenticated, async (req, res) => {
+     pool.query(`select * from pensioners where aadhar=?`,
         [
-            req.body.aadhar
+            req.params.aadhar
         ],
         (error, results, fields) => {
             if (error) {
