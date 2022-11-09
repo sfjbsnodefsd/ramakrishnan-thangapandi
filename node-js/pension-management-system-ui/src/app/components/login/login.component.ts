@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     const observables = this.userService.loginUser(this.user);
     //this.result="User has been added successfully";
 
-    
+
     observables.subscribe(
       (response: any) => {
         this.AddEmail(this.user.email.toString());
