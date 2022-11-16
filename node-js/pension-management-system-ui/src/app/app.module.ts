@@ -29,8 +29,8 @@ import { EmailSessionComponent } from './components/email-session/email-session.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, FormsModule,
-    StoreModule.forRoot({ todos: EmailReducer })
+    HttpClientModule, FormsModule
+    //,StoreModule.forRoot({ todos: EmailReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

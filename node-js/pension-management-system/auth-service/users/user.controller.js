@@ -2,6 +2,8 @@ const { hashSync, compareSync } = require("bcrypt");
 const service = require("./user.service")
 const { genSaltSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
+
+
 module.exports = {
     createUser: (req, res) => {
         const body = req.body;
@@ -40,7 +42,11 @@ module.exports = {
                 const jsontoken = sign({ result: results }, process.env.KEY, {
                     expiresIn: "1h"
                 });
-                console.log("login is successful")
+                console.log("login is successful");
+                // res.setHeader(
+                //     "Access-Control-Allow-Origin", "*");
+                // res.setHeader("Access-Control-Allow-Methods", "POST")
+               // res.set('Access-Control-Allow-Origin', '*');
                 return res.status(200).json({ success: 1, message: "Login successful", token: jsontoken })
             }
             else

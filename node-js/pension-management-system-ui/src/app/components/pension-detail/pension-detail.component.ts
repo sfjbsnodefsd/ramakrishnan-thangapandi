@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Pensioner from 'src/app/entity/pensioner';
+import Pensioner from 'src/app/entity/Pensioner';
 import User from 'src/app/entity/User';
 import { UserService } from 'src/app/services/user.service';
 

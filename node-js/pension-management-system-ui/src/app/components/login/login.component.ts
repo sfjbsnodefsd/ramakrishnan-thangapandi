@@ -14,29 +14,27 @@ import { EmailAdd } from 'src/app/session/email.actions';
 export class LoginComponent implements OnInit {
   user: User = new User();
   //result="";
-  AddEmail(emailAddress: string) {
-    const newEmail = new Todo();
-    newEmail.email = emailAddress;
-    this.store.dispatch(new EmailAdd(newEmail));
-  }
-  constructor(private store: Store<{ todos: Todo[] }>, private userService: UserService, private router: Router) { }
+  // AddEmail(emailAddress: string) {
+  //   const newEmail = new Todo();
+  //   newEmail.email = emailAddress;
+  //   this.store.dispatch(new EmailAdd(newEmail));
+  // }
+  constructor( private userService: UserService, private router: Router) { }
   login() {
     //this.router.navigateByUrl('pension-detail');
-    const observables = this.userService.loginUser(this.user);
-    //this.result="User has been added successfully";
-
-
-    observables.subscribe(
+    const loginObservables = this.userService.loginUser(this.user);
+     loginObservables.subscribe(
       (response: any) => {
-        this.AddEmail(this.user.email.toString());
-        this.router.navigateByUrl('pension-detail');
-        //console.log(response);        
-      }, function (error) {
-        console.log(error);
-
+        localStorage.setItem('userToken', response.token);
+        this.router.navigate([''])
+        //this.router.navigateByUrl('pension-detail');
+      },
+      (httpErrorResponse: any) => {
+        console.log("Error occured during login" + JSON.stringify(httpErrorResponse));
+        //alert(httpErrorResponse.error);
       }
-    );
 
+    );
   }
   ngOnInit(): void {
   }
